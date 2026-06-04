@@ -1,0 +1,83 @@
+@{
+    ViewData["Title"] = "Checkout";
+    var cartItems = TMPP.Models.Database.Cart.Items;
+    double total = cartItems.Sum(i => i.Price);
+}
+
+<div class="hero" style="margin: 2rem 0;">
+    <h1>Checkout</h1>
+    <p>Complete your order securely.</p>
+</div>
+
+@if(cartItems.Count == 0)
+{
+    <div style="text-align: center; padding: 3rem; background: var(--card-bg); border-radius: 1rem;">
+        <h3>Your cart is empty!</h3>
+        <a href="/" class="btn" style="text-decoration: none; margin-top: 1rem; display: inline-block;">Return to Shop</a>
+    </div>
+}
+else
+{
+    <div style="display: flex; gap: 2rem;">
+        <div style="flex: 2;">
+            <form method="post" action="/Checkout" class="demo-container" style="margin-top: 0;">
+                
+                <h3>1. Customer Details (Strategy Pattern)</h3>
+                <div class="form-group">
+                    <label class="form-label">Email for confirmation</label>
+                    <input type="email" name="email" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Customer Type (Discounts)</label>
+                    <select name="customerType" class="form-control">
+                        <option value="Regular">Regular Customer (No Discount)</option>
+                        <option value="Loyalty">Loyalty Card (10% Off)</option>
+                        <option value="Senior">Senior Citizen (20% Off)</option>
+                    </select>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">2. Shipping Options (Decorator Pattern)</h3>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="expressShipping" value="true" />
+                        Express Shipping (+$5.00)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="insulatedPackaging" value="true" />
+                        Insulated Packaging (+$3.50)
+                    </label>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">3. Payment (Facade Pattern)</h3>
+                <div class="form-group">
+                    <label class="form-label">Credit Card</label>
+                    <input type="text" name="cardNumber" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX" required />
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; margin-top: 1.5rem; font-size: 1.2rem;">Place Order</button>
+            </form>
+        </div>
+
+        <div style="flex: 1;">
+            <div class="demo-container" style="margin-top: 0;">
+                <h3>Order Summary</h3>
+                <hr style="border-color: var(--border-color); margin: 1rem 0;" />
+                <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0;">
+                    @foreach(var item in cartItems)
+                    {
+                        <li style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #cbd5e1;">
+                            <span>@item.Name</span>
+                            <span>$@item.Price.ToString("0.00")</span>
+                        </li>
+                    }
+                </ul>
+                <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                    <span>Base Total:</span>
+                    <span style="color: var(--primary);">$@total.ToString("0.00")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+}

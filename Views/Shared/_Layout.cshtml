@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Farmacie Patterns</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar">
+        <div style="display: flex; align-items: center; gap: 2rem;">
+            <a class="navbar-brand" asp-area="" asp-controller="Shop" asp-action="Index">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>Pharma</span>Core
+            </a>
+            <div style="display: flex; gap: 1.5rem;">
+                <a href="/" style="color: var(--text-color); text-decoration: none; font-weight: 600;">Shop</a>
+                <a href="/Checkout" style="color: var(--text-color); text-decoration: none; font-weight: 600;">Checkout</a>
+                <a href="/Admin" style="color: var(--text-color); text-decoration: none; font-weight: 600;">Admin</a>
+                <a href="/Doctor" style="color: var(--text-color); text-decoration: none; font-weight: 600;">Doctor</a>
+            </div>
+        </div>
+        <div style="font-size: 0.9rem; color: #94a3b8;">
+            <span style="color: var(--primary);">12 Patterns</span> Integrated
+        </div>
+    </nav>
+
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

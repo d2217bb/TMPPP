@@ -1,0 +1,88 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="hero">
+    <h1>Design Patterns in Pharmacy</h1>
+    <p>A modern showcase of 12 well-justified and realistic design patterns applied to a pharmacy domain.</p>
+</div>
+
+<div class="pattern-grid">
+    <!-- Creational -->
+    <a href="/Singleton" class="pattern-card">
+        <span class="category-badge category-creational">Creational</span>
+        <h3>Singleton</h3>
+        <p>PharmacyConfigManager: Manages global configuration settings securely from a single instance.</p>
+        <span class="arrow">→</span>
+    </a>
+    <a href="/FactoryMethod" class="pattern-card">
+        <span class="category-badge category-creational">Factory Method</span>
+        <h3>Factory Method</h3>
+        <p>NotificationFactory: Creates specific notification services (SMS/Email) dynamically.</p>
+        <span class="arrow">→</span>
+    </a>
+    <a href="/AbstractFactory" class="pattern-card">
+        <span class="category-badge category-creational">Abstract Factory</span>
+        <h3>Abstract Factory</h3>
+        <p>OrderProcessingFactory: Creates related packaging and shipping services based on order type (Normal/Urgent).</p>
+        <span class="arrow">→</span>
+    </a>
+    <a href="/Builder" class="pattern-card">
+        <span class="category-badge category-creational">Builder</span>
+        <h3>Builder</h3>
+        <p>PrescriptionBuilder: Assembles a complex medical prescription with validation steps.</p>
+        <span class="arrow">→</span>
+    </a>
+
+    <!-- Structural -->
+    <a href="/Adapter" class="pattern-card">
+        <span class="category-badge category-structural">Structural</span>
+        <h3>Adapter</h3>
+        <p>SupplierAPIAdapter: Integrates legacy supplier APIs into the modern inventory system.</p>
+        <span class="arrow">→</span>
+    </a>
+    <a href="/Decorator" class="pattern-card">
+        <span class="category-badge category-structural">Structural</span>
+        <h3>Decorator</h3>
+        <p>OrderServiceDecorator: Dynamically adds extra costs/features (e.g. Insulated Packaging) to an order.</p>
+        <span class="arrow">→</span>
+    </a>
+    <a href="/Facade" class="pattern-card">
+        <span class="category-badge category-structural">Structural</span>
+        <h3>Facade</h3>
+        <p>CheckoutFacade: Simplifies the complex checkout process into a single, unified interface.</p>
+        <span class="arrow">→</span>
+    </a>
+    <a href="/Proxy" class="pattern-card">
+        <span class="category-badge category-structural">Structural</span>
+        <h3>Proxy</h3>
+        <p>InventoryAccessProxy: Controls access to sensitive inventory operations based on user roles.</p>
+        <span class="arrow">→</span>
+    </a>
+
+    <!-- Behavioral -->
+    <a href="/Observer" class="pattern-card">
+        <span class="category-badge category-behavioral">Behavioral</span>
+        <h3>Observer</h3>
+        <p>StockNotifier: Alerts subscribed customers when out-of-stock medication becomes available.</p>
+        <span class="arrow">→</span>
+    </a>
+    <a href="/Strategy" class="pattern-card">
+        <span class="category-badge category-behavioral">Behavioral</span>
+        <h3>Strategy</h3>
+        <p>DiscountStrategy: Applies different discount algorithms (Senior, Loyalty) interchangeably.</p>
+        <span class="arrow">→</span>
+    </a>
+    <a href="/State" class="pattern-card">
+        <span class="category-badge category-behavioral">Behavioral</span>
+        <h3>State</h3>
+        <p>OrderState: Manages the lifecycle of an order where behavior changes based on its current state.</p>
+        <span class="arrow">→</span>
+    </a>
+    <a href="/Command" class="pattern-card">
+        <span class="category-badge category-behavioral">Behavioral</span>
+        <h3>Command</h3>
+        <p>CartCommand: Encapsulates cart operations to support undo functionality.</p>
+        <span class="arrow">→</span>
+    </a>
+</div>

@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "Doctor Portal";
+    var logs = TempData["DoctorLogs"] as string[];
+}
+
+<div class="hero" style="margin: 2rem 0;">
+    <h1>Doctor Portal</h1>
+    <p>Generate digital prescriptions for your patients securely using the Builder pattern.</p>
+</div>
+
+<div style="display: flex; gap: 2rem;">
+    <div class="demo-container" style="flex: 1; margin-top: 0;">
+        <h3>Prescription Builder</h3>
+        <form method="post" action="/Doctor/Build">
+            <div class="form-group">
+                <label class="form-label">Patient Name</label>
+                <input type="text" name="patientName" class="form-control" placeholder="John Doe" required />
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Auto-generate Protocol (Director)</label>
+                <select name="antibiotic" class="form-control">
+                    <option value="">None (Empty Prescription)</option>
+                    <option value="Amoxicillin">Antibiotic Protocol (Amoxicillin + Probiotic)</option>
+                    <option value="Ciprofloxacin">Antibiotic Protocol (Ciprofloxacin + Probiotic)</option>
+                </select>
+                <small style="color: #94a3b8; margin-top: 0.5rem; display: block;">Selecting a protocol uses the Director to automatically add multiple related medications and sign.</small>
+            </div>
+            
+            <div class="form-group" style="margin-top: 2rem;">
+                <label class="checkbox-label" style="color: #f59e0b;">
+                    <input type="checkbox" name="isSigned" value="true" />
+                    <strong>Digital Signature (Required for manual prescriptions)</strong>
+                </label>
+            </div>
+            
+            <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Generate Prescription</button>
+        </form>
+    </div>
+
+    <div class="demo-container" style="flex: 1; margin-top: 0; background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2);">
+        <h3 style="color: #34d399;">Result Output</h3>
+        @if (logs != null)
+        {
+            <div class="log-box" style="background: rgba(0,0,0,0.3); border: none;">
+                @foreach (var log in logs)
+                {
+                    <div style="margin-bottom: 0.5rem; color: @(log.Contains("ERROR") ? "#ef4444" : "#a7f3d0");">> @log</div>
+                }
+            </div>
+        }
+        else
+        {
+            <p style="color: #94a3b8; text-align: center; margin-top: 3rem;">Submit the form to build a prescription.</p>
+        }
+    </div>
+</div>

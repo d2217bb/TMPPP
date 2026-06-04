@@ -1,0 +1,10 @@
+namespace TMPP.Models;
+
+public class Product
+{
+    public string Id { get; set; } = "";
+    public string Name { get; set; } = "";
+    public double Price { get; set; }
+    public int StockQuantity { get; set; }
+    public bool RequiresColdStorage { get; set; }
+}

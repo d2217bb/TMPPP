@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Order Successful";
+    var logs = TempData["CheckoutLogs"] as string[];
+}
+
+<div class="hero" style="margin: 2rem 0;">
+    <h1 style="color: #34d399;">Order Placed Successfully!</h1>
+    <p>Your order has been processed through our unified pattern architecture.</p>
+</div>
+
+<div class="demo-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3>Execution Trace (Behind the scenes)</h3>
+        <a href="/" class="btn btn-secondary" style="text-decoration: none;">Continue Shopping</a>
+    </div>
+    
+    @if (logs != null)
+    {
+        <div class="log-box">
+            @foreach (var log in logs)
+            {
+                <div style="margin-bottom: 0.5rem;">> @log</div>
+            }
+        </div>
+    }
+</div>
